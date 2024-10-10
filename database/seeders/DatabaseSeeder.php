@@ -14,5 +14,6 @@ class DatabaseSeeder extends Seeder
     public function run(): void
     {
         $this->call(VaccineCenterSeeder::class);
+        $this->call(FakeNidRecordSeeder::class);
     }
 }
