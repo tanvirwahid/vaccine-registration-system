@@ -18,9 +18,15 @@ class FakeNidRecordFactory extends Factory
      */
     public function definition(): array
     {
+        $nids = [];
+        for($i = '30000000001' ; $i<='30000000050'; $i++)
+        {
+            $nids[] = $i;
+        }
+
         return [
             'name' => $this->faker->name(),
-            'nid' => $this->faker->unique()->numerify('###########'),
+            'nid' => $this->faker->unique()->randomElement($nids),
             'date_of_birth' => $this->faker->date()
         ];
     }
