@@ -12,4 +12,11 @@ class VaccineCenterRepository implements VaccineCenterRepositoryInterface
         return VaccineCenter::all();
     }
 
+    public function lockRow(int $id): VaccineCenter
+    {
+        return VaccineCenter::where('id', $id)
+            ->lockForUpdate()
+            ->first();
+    }
+
 }

@@ -10,15 +10,13 @@ class UserRepository implements UserRepositoryInterface
 {
     public function create(UserCreationData $data): User
     {
-        $user = new User;
+        $userData = [];
 
         foreach(config('users.columns') as $column)
         {
-            $user->{$column} = $data->{$column};
+            $userData[$column] = $data->{$column};;
         }
 
-        $user->save();
-
-        return $user;
+        return User::create($userData);
     }
 }
