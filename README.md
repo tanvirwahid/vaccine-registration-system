@@ -55,7 +55,7 @@ You can use mailtrap for testing
 12) Open another terminal and run 'npm install'
 13) After dependencies are installed run 'npm run dev'
 14) Open browser and go to http://localhost:8000 (port may be different if something is already running there)
-15) To check email notification run 'php artisan send-mail-notification'.
+15) To check email notification run 'php artisan send-mail-notification'. You can see scheduling logic in routes/console.php.
 
 **Notes**
 1) If sms notification support is needed, then we have to create a migration file to add mobile/phone column to users table. Then we have to open config/users.php file and add that column and necessary validation rule there. Also we need to check if phone/mobile column is empty during sending notification.
