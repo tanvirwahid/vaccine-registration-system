@@ -22,9 +22,8 @@ class RegistrationController extends Controller
 
     public function store(UserService $userService, UserRegistrationRequest $request)
     {
-        return redirect(route('register'))
-            ->with([
-               'user' => $userService->create(UserCreationData::fromForm($request))
-            ]);
+        $user = $userService->create(UserCreationData::fromForm($request));
+
+        return redirect()->route('status.index', ['nid' => $request->nid]);
     }
 }

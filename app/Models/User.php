@@ -4,6 +4,7 @@ namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
@@ -23,5 +24,10 @@ class User extends Authenticatable
         'date_of_birth',
         'nid'
     ];
+
+    public function schedules(): HasMany
+    {
+        return $this->hasMany(VaccineSchedule::class);
+    }
 
 }

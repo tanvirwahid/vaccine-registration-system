@@ -33,7 +33,6 @@ class FakeNidInfoFetcher implements ShouldQueue, NidInfoFetcherInterface
      */
     public function handle(): void
     {
-        Log::info('kk');
         $fakeUserData = $this->fakeNidRecordRepository->findByNid($this->data);
 
         if ($fakeUserData) {

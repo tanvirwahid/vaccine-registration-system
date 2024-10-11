@@ -5,6 +5,7 @@ namespace App\Repositories;
 use App\Contracts\Repositories\UserRepositoryInterface;
 use App\DTOs\UserCreationData;
 use App\Models\User;
+use App\Models\VaccineSchedule;
 
 class UserRepository implements UserRepositoryInterface
 {
@@ -18,5 +19,10 @@ class UserRepository implements UserRepositoryInterface
         }
 
         return User::create($userData);
+    }
+
+    public function getuserWithScheduleFromNid(string $nid): ?User
+    {
+        return User::where('nid', $nid)->with('schedules')->first();
     }
 }

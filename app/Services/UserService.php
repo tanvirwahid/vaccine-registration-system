@@ -14,6 +14,11 @@ class UserService
     )
     {}
 
+    public function getStatus(string $nid)
+    {
+        $schedule = $this->userRepository->getScheduleFromNid($nid);
+    }
+
     public function create(UserCreationData $data): User
     {
         $user = $this->userRepository->create($data);

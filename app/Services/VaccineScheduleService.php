@@ -6,6 +6,7 @@ use App\Contracts\Repositories\VaccineCenterRepositoryInterface;
 use App\Contracts\Repositories\VaccineScheduleRepositoryInterface;
 use App\DTOs\ScheduleData;
 use App\Models\VaccineSchedule;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 
@@ -31,6 +32,8 @@ class VaccineScheduleService
             );
 
         });
+
+        Cache::forget(hash('sha256', $schedule->user->nid));
 
         return $schedule;
     }
