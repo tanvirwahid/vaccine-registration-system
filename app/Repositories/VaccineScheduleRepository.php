@@ -7,6 +7,7 @@ use App\DTOs\ScheduleData;
 use App\Entities\VaccineScheduleData;
 use App\Models\VaccineSchedule;
 use Carbon\Carbon;
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Support\Facades\DB;
 
 class VaccineScheduleRepository implements VaccineScheduleRepositoryInterface
@@ -36,6 +37,13 @@ class VaccineScheduleRepository implements VaccineScheduleRepositoryInterface
             Carbon::parse($result->date),
             $result->total
         );
+    }
+
+    public function getNextDaySchedules(): Collection
+    {
+        return VaccineSchedule::where('date', Carbon::today()->addDays(1))
+            ->with(['user', 'vaccineCenter'])
+            ->get();
     }
 
 }
