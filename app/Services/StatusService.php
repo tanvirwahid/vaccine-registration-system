@@ -16,7 +16,6 @@ class StatusService
 
     public function getStatus(string $nid): string
     {
-        Log::info(hash('sha256', $nid));
         return Cache::remember(
             hash('sha256', $nid),
             6*60,
