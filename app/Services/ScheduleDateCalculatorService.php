@@ -11,22 +11,23 @@ class ScheduleDateCalculatorService
     {
         $date = $this->getWeekDay(Carbon::today());
 
-        if($scheduleData->getDate() != null)
-        {
+        if ($scheduleData->getDate() !== null) {
             $date = $scheduleData->getDate();
 
-            if($scheduleData->getTotal() >= $limit)
-            {
-                $date = $this->getWeekDay($date->addDays(1));
+            if ($scheduleData->getTotal() >= $limit) {
+                $date = $this->getWeekDay($date->addDay());
             }
         }
 
         $now = Carbon::now();
         $eightPM = Carbon::today()->setTime(20, 0);
 
-        if($now->gte($eightPM) && $date->isToday())
-        {
-            $date = $this->getWeekDay($date->addDays(1));
+        if ($date->isToday()) {
+            $date = $this->getWeekDay($date->addDay());
+        }
+
+        if ($date->isTomorrow() && $now->gte($eightPM)) {
+            $date = $this->getWeekDay($date->addDay());
         }
 
         return $date;
