@@ -7,28 +7,43 @@ To run this application
 5) Put database credentials here
 
 DB_CONNECTION=mysql
+
 DB_HOST=127.0.0.1
+
 DB_PORT=3306
+
 DB_DATABASE=database_name
+
 DB_USERNAME=database_username
+
 DB_PASSWORD=db_password
 
 6) Make sure BROADCAST_CONNECTION=pusher
 7) Put your pusher credential here
 
 PUSHER_APP_ID=
+
 PUSHER_APP_KEY=
+
 PUSHER_APP_SECRET=
+
 PUSHER_APP_CLUSTER=
 
 8) Put necessary mail configuration/credential here 
 MAIL_MAILER=log
+
 MAIL_HOST=127.0.0.1
+
 MAIL_PORT=2525
+
 MAIL_USERNAME=null
+
 MAIL_PASSWORD=null
+
 MAIL_ENCRYPTION=null
+
 MAIL_FROM_ADDRESS="hello@example.com"
+
 MAIL_FROM_NAME="${APP_NAME}"
 
 You can use mailtrap for testing
@@ -40,6 +55,7 @@ You can use mailtrap for testing
 12) Open another terminal and run 'npm install'
 13) After dependencies are installed run 'npm run dev'
 14) Open browser and go to http://localhost:8000 (port may be different if something is already running there)
+15) To check email notification run 'php artisan send-mail-notification'. You can see scheduling logic in routes/console.php.
 
 **Notes**
 1) If sms notification support is needed, then we have to create a migration file to add mobile/phone column to users table. Then we have to open config/users.php file and add that column and necessary validation rule there. Also we need to check if phone/mobile column is empty during sending notification.
